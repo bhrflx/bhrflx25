@@ -1,0 +1,67 @@
+@import "normalise.css" layer(normalise);
+
+@layer normalise, base;
+
+@layer base {
+    :root {
+        color-scheme: light dark;
+
+        --bg: light-dark(oklch(1 0 0), oklch(0.1776 0 0));
+        --fg: light-dark(oklch(0.1776 0 0), oklch(1 0 0));
+        --container: light-dark(oklch(0.791 0 0), oklch(0.209 0 0));
+        --container-stroke: light-dark(oklch(0.7273 0 0), oklch(0.2727 0 0));
+
+        --spring-easing: linear(
+            0,
+            0.009,
+            0.035 2.1%,
+            0.141,
+            0.281 6.7%,
+            0.723 12.9%,
+            0.938 16.7%,
+            1.017,
+            1.077,
+            1.121,
+            1.149 24.3%,
+            1.159,
+            1.163,
+            1.161,
+            1.154 29.9%,
+            1.129 32.8%,
+            1.051 39.6%,
+            1.017 43.1%,
+            0.991,
+            0.977 51%,
+            0.974 53.8%,
+            0.975 57.1%,
+            0.997 69.8%,
+            1.003 76.9%,
+            1.004 83.8%,
+            1
+        );
+        --spring-duration: 0.7s;
+    }
+
+    *,
+    *:after,
+    *:before {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        margin: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        padding: 10px;
+        overflow-x: hidden;
+
+        background-color: var(--bg);
+        color: var(--fg);
+
+        font-family: var(--jetbrains-mono);
+    }
+}

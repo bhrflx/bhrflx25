@@ -1,0 +1,70 @@
+---
+interface Props {
+    colour: string;
+}
+
+const { colour = "red" } = Astro.props;
+---
+
+<div class="book">
+    <div class="highlight">
+        <div class="cover">
+            <div class="stitching"></div>
+        </div>
+    </div>
+</div>
+
+<style define:vars={{ colour }}>
+    .book {
+        isolation: isolate;
+        container: book / inline-size;
+
+        transition: transform var(--spring-duration) var(--spring-easing);
+        filter: drop-shadow(0 2cqi 2cqi oklch(0 0 0 / 0.5));
+    }
+
+    .highlight {
+        width: 100%;
+        aspect-ratio: 1 / 1.3;
+        padding: 1cqi;
+
+        border-radius: 3cqi 10cqi 10cqi 3cqi;
+        background: linear-gradient(
+            188deg,
+            oklch(from var(--colour) calc(l + 0.4) calc(c - 0.05) h) 5%,
+            oklch(from var(--colour) calc(l - 0.4) calc(c - 0.05) h) 95%
+        );
+    }
+
+    .cover {
+        width: 100%;
+        height: 100%;
+        overflow: clip;
+        position: relative;
+
+        border-radius: 2cqi 9cqi 9cqi 2cqi;
+        background: linear-gradient(
+            188deg,
+            oklch(from var(--colour) calc(l + 0.1) calc(c - 0.05) h) 5%,
+            oklch(from var(--colour) calc(l - 0.2) calc(c - 0.05) h) 95%
+        );
+    }
+
+    .stitching {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 10cqi;
+
+        border-right: 1cqi dashed
+            oklch(from var(--colour) calc(l - 0.4) calc(c - 0.05) h);
+        box-shadow:
+            1cqi 0 2cqi
+                oklch(from var(--colour) calc(l + 0.5) calc(c - 0.05) h / 0.5),
+            inset -1cqi 0 2cqi
+                oklch(from var(--colour) calc(l - 0.5) calc(c - 0.05) h / 0.5);
+    }
+
+    .book:hover {
+        transform: perspective(200cqi) rotate3d(0.5, 0.2, 1, 10deg);
+    }
+</style>

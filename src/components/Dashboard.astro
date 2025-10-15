@@ -1,0 +1,127 @@
+---
+import { Image } from "astro:assets";
+import portrait from "../assets/portrait.png";
+import Key from "../components/icons/Key.astro";
+import Folder from "../components/icons/Folder.astro";
+import Book from "../components/icons/Book.astro";
+---
+
+<section>
+    <div class="box about">
+        <h1>Hi! I'm Felix.</h1>
+        <p>
+            I’m a full-stack software developer and communication designer from
+            Konstanz, DE. I love creating delightful, tailour-made web
+            experiences. I currently work at Büro Bobr as Head of Development.
+        </p>
+        <Image
+            src={portrait}
+            alt="Portrait of Felix Bahr"
+            layout="constrained"
+            fit="contain"
+        />
+    </div>
+    <div class="box center">
+        <div class="folders">
+            <div class="folder__bottom">
+                <Folder />
+            </div>
+            <div class="book__bottom">
+                <Book colour="red" />
+            </div>
+            <div class="book__top">
+                <Book colour="blue" />
+            </div>
+            <div class="folder__top">
+                <Folder />
+            </div>
+        </div>
+        <a href="/work">
+            <Key keyCode="W" />
+            <span>Work</span>
+        </a>
+    </div>
+</section>
+
+<style>
+    section {
+        width: 100%;
+        max-width: 100%;
+
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+        grid-template-rows: repeat(3, auto);
+    }
+
+    a {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        gap: 10px;
+
+        color: var(--fg);
+        font-size: 20px;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .box {
+        padding: 24px;
+
+        display: flex;
+        flex-flow: column nowrap;
+        overflow: hidden;
+
+        background-color: var(--container);
+        border: 1px solid var(--container-stroke);
+        border-radius: 42px;
+        box-shadow: 0px 2px 4px oklch(0 0 0 / 0.25) inset;
+
+        & > img {
+            max-width: 100%;
+        }
+
+        &.center {
+            align-items: center;
+        }
+    }
+
+    .folders {
+        position: relative;
+        isolation: isolate;
+
+        width: 100%;
+        max-width: 400px;
+        aspect-ratio: 1;
+
+        & .folder__bottom {
+            position: absolute;
+            inset: auto auto 10% 0;
+            width: 90%;
+            rotate: 6deg;
+        }
+
+        & .book__bottom {
+            position: absolute;
+            inset: auto auto 12% 10%;
+            width: 60%;
+            rotate: -0.5deg;
+        }
+
+        & .book__top {
+            position: absolute;
+            inset: 10% 20% auto auto;
+            width: 60%;
+            rotate: 12deg;
+        }
+
+        & .folder__top {
+            position: absolute;
+            inset: auto 0 10% auto;
+            width: 90%;
+            rotate: -6deg;
+            filter: url(#filter);
+        }
+    }
+</style>

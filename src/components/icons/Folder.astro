@@ -1,0 +1,117 @@
+<div class="folder">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 122 84"
+        ><path
+            d="M98.542.875h10.492c6.351 0 11.5 5.148 11.5 11.5V71.02c0 6.351-5.149 11.5-11.5 11.5H12.921c-6.35 0-11.5-5.149-11.5-11.5V19.538c0-6.352 5.15-11.5 11.5-11.5h69.721c3.184 0 6.215-1.366 8.324-3.75A10.115 10.115 0 0 1 98.542.875Z"
+            fill="url(#a)"
+            stroke="url(#b)"></path><defs
+            ><linearGradient
+                id="a"
+                x1="60.977"
+                y1="-5.135"
+                x2="60.977"
+                y2="83.02"
+                gradientUnits="userSpaceOnUse"
+                ><stop stop-color="#A3CAE6"></stop><stop
+                    offset=".26"
+                    stop-color="#79B0D8"></stop></linearGradient
+            ><linearGradient
+                id="b"
+                x1="60.977"
+                y1="-5.135"
+                x2="60.977"
+                y2="83.02"
+                gradientUnits="userSpaceOnUse"
+                ><stop stop-color="#D9EFFF"></stop><stop
+                    offset="1"
+                    stop-color="#3A7CAB"></stop></linearGradient
+            ></defs
+        ></svg
+    >
+    <div class="paper"></div>
+    <div class="front">
+        <div class="front__inner"></div>
+    </div>
+</div>
+
+<style>
+    .folder {
+        position: relative;
+        isolation: isolate;
+        container: folder / inline-size;
+    }
+
+    svg {
+        transform-origin: center bottom;
+        transition: transform var(--spring-duration) var(--spring-easing);
+        filter: drop-shadow(0 2cqi 2cqi oklch(0 0 0 / 0.5));
+    }
+
+    .paper {
+        width: 90cqi;
+        height: 80%;
+        position: absolute;
+        inset: auto 5% 5% 5%;
+
+        border-radius: 5cqi;
+        border: 1cqi solid oklch(1 0 0);
+        background-color: oklch(0.9316 0.0169 88);
+        box-shadow: 0 2cqi 4cqi oklch(0 0 0 / 0.4);
+
+        transition: translate var(--spring-duration) var(--spring-easing);
+    }
+
+    .front {
+        width: 98cqi;
+        height: 78%;
+        padding: 1cqi;
+        position: absolute;
+        inset: auto 1% 1% 1%;
+        z-index: 1;
+
+        border-radius: 11cqi;
+        background: linear-gradient(
+            180deg,
+            oklch(0.9401 0.0326 238.14) 0%,
+            oklch(0.5643 0.0991 242.38) 100%
+        );
+        box-shadow: 0 -1cqi 5cqi oklch(0 0 0 / 0.25);
+
+        transform-origin: center bottom;
+        transition:
+            transform var(--spring-duration) var(--spring-easing),
+            box-shadow var(--spring-duration) var(--spring-easing);
+    }
+
+    .front__inner {
+        width: 100%;
+        height: 100%;
+
+        border-radius: 10cqi;
+        background: linear-gradient(
+            180deg,
+            oklch(0.9078 0.0503 239.21) 0%,
+            oklch(0.734 0.082 240.84) 100%
+        );
+        filter: brightness(1);
+        transition: filter var(--spring-duration) var(--spring-easing);
+    }
+
+    .folder:hover {
+        & svg {
+            transform: perspective(200cqi) rotate3d(1, 0, 0, 3deg);
+        }
+
+        & .paper {
+            translate: 0 -5cqi;
+        }
+
+        & .front {
+            transform: perspective(200cqi) rotate3d(-1, 0, 0, 10deg);
+            box-shadow: 0 -3cqi 5cqi oklch(0 0 0 / 0.25);
+        }
+
+        & .front__inner {
+            filter: brightness(0.9);
+        }
+    }
+</style>
