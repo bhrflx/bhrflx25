@@ -1,0 +1,88 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+    src: ImageMetadata;
+    alt: string;
+}
+
+const { src, alt } = Astro.props;
+---
+
+<div class="photo">
+    <div class="highlight__outer">
+        <div class="border">
+            <div class="highlight__inner">
+                <Image src={src} alt={alt} layout="constrained" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .photo {
+        width: 100%;
+
+        container: photo / inline-size;
+        isolation: isolate;
+    }
+
+    .highlight__outer {
+        padding: 1cqi;
+        overflow: clip;
+
+        border-radius: 5cqi;
+        background: linear-gradient(
+            180deg,
+            oklch(1 0 0) 0%,
+            oklch(0.8 0 0) 100%
+        );
+
+        filter: drop-shadow(0 4cqi 4cqi oklch(0 0 0 / 0.5));
+        transition: transform var(--spring-duration) var(--spring-easing);
+    }
+
+    .border {
+        padding: 10cqi;
+        position: relative;
+
+        border-radius: 4cqi;
+        background-color: oklch(0.9461 0 0);
+    }
+
+    .highlight__inner {
+        position: relative;
+        padding: 1cqi;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: linear-gradient(
+            180deg,
+            oklch(0.8 0 0) 0%,
+            oklch(1 0 0) 100%
+        );
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 1cqi;
+
+            background: linear-gradient(
+                -45deg,
+                oklch(0.3 0 0) 0%,
+                oklch(0.9 0 0) 60%,
+                oklch(0.5 0 0) 100%
+            );
+
+            opacity: 0.5;
+            mix-blend-mode: hard-light;
+        }
+    }
+
+    .photo:hover .highlight__outer {
+        transform: perspective(200cqi) rotate3d(0.5, 0.2, -1, 10deg);
+    }
+</style>
