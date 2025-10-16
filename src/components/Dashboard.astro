@@ -1,17 +1,15 @@
 ---
 import { Image } from "astro:assets";
+import { Book, Folder, Key, Photo } from "../components/icons";
 import portrait from "../assets/portrait.png";
 import beach from "../assets/photography/keras.png";
 import house from "../assets/photography/chania.png";
-import Key from "../components/icons/Key.astro";
-import Folder from "../components/icons/Folder.astro";
-import Book from "../components/icons/Book.astro";
-import Photo from "../components/icons/Photo.astro";
+import Link from "./input/Link.astro";
 ---
 
 <section>
     <div class="box about">
-        <h1>Hi! I'm Felix.</h1>
+        <h1><b>Hi!</b><br /> I'm Felix.</h1>
         <p>
             I’m a full-stack software developer and communication designer from
             Konstanz, DE. I love creating delightful, tailour-made web
@@ -23,6 +21,7 @@ import Photo from "../components/icons/Photo.astro";
             layout="constrained"
             fit="contain"
         />
+        <Link label="Learn more" href="about" />
     </div>
     <div class="box center">
         <div class="folders">
@@ -63,12 +62,35 @@ import Photo from "../components/icons/Photo.astro";
 <style>
     section {
         width: 100%;
-        max-width: 100%;
+        max-width: 750px;
 
         display: grid;
         gap: 12px;
-        grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
         grid-template-rows: repeat(3, auto);
+    }
+
+    h1 {
+        margin: 0;
+
+        font-size: 32px;
+        font-weight: 400;
+        color: var(--fg);
+        text-transform: uppercase;
+
+        & > b {
+            font-weight: 700;
+        }
+    }
+
+    p {
+        margin: 0;
+
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 1.5;
+        color: var(--fg);
+        text-transform: uppercase;
     }
 
     a {
@@ -85,10 +107,11 @@ import Photo from "../components/icons/Photo.astro";
 
     .box {
         padding: 24px;
+        overflow: hidden;
 
         display: flex;
         flex-flow: column nowrap;
-        overflow: hidden;
+        gap: 12px;
 
         background-color: var(--container);
         border: 1px solid var(--container-stroke);
@@ -111,6 +134,7 @@ import Photo from "../components/icons/Photo.astro";
         width: 100%;
         max-width: 400px;
         aspect-ratio: 1;
+        padding: 24px;
 
         & .folder__bottom {
             position: absolute;
@@ -149,6 +173,7 @@ import Photo from "../components/icons/Photo.astro";
         width: 100%;
         max-width: 400px;
         aspect-ratio: 1;
+        padding: 24px;
 
         & > .photo__bottom {
             position: absolute;

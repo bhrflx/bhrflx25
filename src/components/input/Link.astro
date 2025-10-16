@@ -1,0 +1,100 @@
+---
+interface Props {
+    label: string;
+    href: string;
+}
+
+const { label, href } = Astro.props;
+---
+
+<a href={href}>
+    <svg
+        viewBox="0 0 200 200"
+        xmlns="http://www.w3.org/2000/svg"
+        class="filter"
+    >
+        <filter id="noise">
+            <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.85"
+                numOctaves="3"
+                stitchTiles="stitch"
+            >
+            </feTurbulence>
+        </filter>
+    </svg>
+
+    <div>
+        <span>{label}</span>
+    </div>
+</a>
+
+<style>
+    a {
+        position: relative;
+
+        padding: 1px;
+        border-radius: 18px;
+        background: linear-gradient(
+            180deg,
+            oklch(0.74 0 0) 0%,
+            oklch(0.45 0 0) 100%
+        );
+        box-shadow: 0 10px 24px 0 oklch(0 0 0 / 0.5);
+        transition:
+            scale var(--spring-duration) var(--spring-easing),
+            box-shadow var(--spring-duration) var(--spring-easing);
+
+        font-size: 16px;
+        color: var(--fg);
+        text-decoration: none;
+        text-transform: uppercase;
+
+        &:hover {
+            scale: 0.98;
+            box-shadow: 0 5px 12px 0 oklch(0 0 0 / 0.5);
+        }
+
+        &:active {
+            scale: 0.95;
+            box-shadow: 0 2px 4px 0 oklch(0 0 0 / 0.5);
+        }
+    }
+
+    div {
+        position: relative;
+        overflow: clip;
+
+        padding: 18px 24px;
+        border-radius: 17px;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: center;
+
+        background: linear-gradient(
+            180deg,
+            oklch(0 0 0) 0%,
+            oklch(0.4091 0 0) 100%
+        );
+
+        ::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            filter: url(#noise) saturate(0) contrast(170%);
+            mix-blend-mode: soft-light;
+        }
+    }
+
+    span {
+        text-box: trim-both cap alphabetic;
+    }
+
+    .filter {
+        width: 1px;
+        height: 1px;
+        position: absolute;
+        inset: 0;
+    }
+</style>

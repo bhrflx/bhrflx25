@@ -13,6 +13,7 @@ export default defineConfig({
         provider: fontProviders.fontshare(),
         name: "JetBrains Mono",
         cssVariable: "--jetbrains-mono",
+        weights: ["100 900"],
         // Download only font files for characters used on the page
         subsets: ["latin"],
         // Use a fallback font family matching the intended appearance
