@@ -18,6 +18,8 @@ import "../styles/app.css";
 <style>
     body {
         padding: 10px;
+        padding-top: calc(env(safe-area-inset-top, 0) + 10px);
+        padding-bottom: calc(env(safe-area-inset-bottom, 0) + 10px);
 
         display: grid;
         grid-template-columns: 1fr;
