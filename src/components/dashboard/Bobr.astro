@@ -3,29 +3,22 @@ import { Key } from "../../components/icons";
 import BobrLogo from "../icons/Bobr.astro";
 ---
 
-<div class="box">
+<a
+    class="box"
+    href="https://bobr.digital"
+    target="_blank"
+    referrerpolicy="no-referrer"
+>
     <div class="bobr">
         <BobrLogo />
     </div>
-    <a href="https://bobr.digital" target="_blank" referrerpolicy="no-referrer">
+    <div class="label">
         <Key key="B" code="KeyB" />
         <span>Büro Bobr</span>
-    </a>
-</div>
+    </div>
+</a>
 
 <style>
-    a {
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        gap: 10px;
-
-        color: var(--fg);
-        font-size: 16px;
-        text-decoration: none;
-        text-transform: uppercase;
-    }
-
     .box {
         grid-area: bobr;
 
@@ -35,7 +28,13 @@ import BobrLogo from "../icons/Bobr.astro";
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
+        justify-content: center;
         gap: 12px;
+
+        color: var(--fg);
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
 
         background-color: var(--container);
         border: 1px solid var(--container-stroke);
@@ -43,8 +42,17 @@ import BobrLogo from "../icons/Bobr.astro";
         box-shadow: 0px 2px 4px oklch(0 0 0 / 0.25) inset;
     }
 
+    .label {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        gap: 10px;
+    }
+
     .bobr {
         flex: 1;
+        max-width: 300px;
+
         display: flex;
         align-items: center;
         justify-content: center;

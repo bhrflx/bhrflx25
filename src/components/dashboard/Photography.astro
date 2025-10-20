@@ -4,7 +4,7 @@ import beach from "../../assets/photography/keras.png";
 import { Key, Photo } from "../../components/icons";
 ---
 
-<div class="box">
+<a class="box" href="/work">
     <div class="photos">
         <div class="photo__bottom">
             <Photo src={beach} alt="A beach at sunset" />
@@ -13,25 +13,13 @@ import { Key, Photo } from "../../components/icons";
             <Photo src={house} alt="Colourful houses in Chania" />
         </div>
     </div>
-    <a href="/work">
+    <div class="label">
         <Key key="P" code="KeyP" />
         <span>Photography</span>
-    </a>
-</div>
+    </div>
+</a>
 
 <style>
-    a {
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        gap: 10px;
-
-        color: var(--fg);
-        font-size: 16px;
-        text-decoration: none;
-        text-transform: uppercase;
-    }
-
     .box {
         grid-area: photo;
 
@@ -41,7 +29,13 @@ import { Key, Photo } from "../../components/icons";
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
+        justify-content: center;
         gap: 12px;
+
+        color: var(--fg);
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
 
         background-color: var(--container);
         border: 1px solid var(--container-stroke);
@@ -49,26 +43,32 @@ import { Key, Photo } from "../../components/icons";
         box-shadow: 0px 2px 4px oklch(0 0 0 / 0.25) inset;
     }
 
+    .label {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        gap: 10px;
+    }
+
     .photos {
         position: relative;
         isolation: isolate;
 
         width: 100%;
-        max-width: 400px;
+        max-width: 300px;
         aspect-ratio: 1;
-        padding: 24px;
 
         & > .photo__bottom {
             position: absolute;
-            inset: auto auto 12% 0;
-            width: 70%;
+            inset: auto auto 12% 5%;
+            width: 60%;
             rotate: -2deg;
         }
 
         & > .photo__top {
             position: absolute;
             inset: 10% 5% auto auto;
-            width: 70%;
+            width: 60%;
             rotate: 12deg;
         }
     }

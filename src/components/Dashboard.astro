@@ -11,9 +11,9 @@ import Work from "./dashboard/Work.astro";
     <About />
     <Work />
     <Photography />
-    <Status status="available" />
-    <Socials />
     <Bobr />
+    <Socials />
+    <Status status="available" />
 </section>
 
 <script>
@@ -44,12 +44,27 @@ import Work from "./dashboard/Work.astro";
 <style>
     section {
         width: 100%;
-        max-width: 750px;
+        max-width: 1200px;
 
         display: grid;
         gap: 12px;
-        grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+        grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(4, auto);
-        grid-template-areas: "about work photo" "about work photo" "about status bobr" "about contact bobr";
+        grid-template-areas:
+            "about about"
+            "work photo"
+            "bobr contact"
+            "status status";
+    }
+
+    @media screen and (min-width: 640px) {
+        section {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-areas:
+                "about work photo"
+                "about work photo"
+                "about status bobr"
+                "about contact bobr";
+        }
     }
 </style>
