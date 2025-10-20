@@ -1,13 +1,17 @@
 ---
-import "../styles/app.css";
 import Head from "../components/Head.astro";
+import "../styles/app.css";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
     <Head />
     <body>
         <slot />
+        <footer>
+            <p>©{new Date().getFullYear()} Felix Bahr</p>
+            <a href="/imprint">Imprint</a>
+        </footer>
     </body>
 </html>
 
@@ -19,5 +23,28 @@ import Head from "../components/Head.astro";
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
         place-items: center;
+        gap: 24px;
+    }
+
+    footer {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        gap: 8px;
+
+        & > p,
+        & > a {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: var(--fg);
+        }
+
+        & > p::after {
+            content: "|";
+            margin-left: 8px;
+
+            font: inherit;
+            color: var(--fg);
+        }
     }
 </style>
