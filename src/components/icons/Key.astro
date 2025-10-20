@@ -7,7 +7,7 @@ interface Props {
 const { key, code } = Astro.props;
 ---
 
-<div class="key sides" aria-hidden data-code={code}>
+<div class="key" aria-hidden data-code={code}>
     <div class="highlight">
         <div class="top">
             <span>{key}</span>
@@ -38,14 +38,12 @@ const { key, code } = Astro.props;
 </script>
 
 <style>
-    .sides {
+    .key {
         width: 26px;
         height: 26px;
         padding: 2px;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: none;
 
         border-radius: 6px;
         background: linear-gradient(
@@ -103,9 +101,11 @@ const { key, code } = Astro.props;
         color: var(--fg);
     }
 
-    @media (hover: none) and (pointer: coarse) {
+    @media (hover: hover) and (pointer: fine) {
         .key {
-            display: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 </style>
