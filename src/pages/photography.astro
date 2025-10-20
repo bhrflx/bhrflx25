@@ -49,6 +49,8 @@ import beach from "../assets/photography/keras.png";
         padding: 24px;
         overflow: hidden;
 
+        height: 100%;
+
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
@@ -106,6 +108,8 @@ import beach from "../assets/photography/keras.png";
     }
 
     .photos {
+        margin-block: auto;
+
         position: relative;
         isolation: isolate;
 
@@ -133,6 +137,16 @@ import beach from "../assets/photography/keras.png";
             inset: 30% auto auto 25%;
             width: 50%;
             rotate: 8deg;
+        }
+    }
+
+    @media screen and (min-width: 640px) {
+        section {
+            height: auto;
+        }
+
+        .photos: {
+            margin-block: 0;
         }
     }
 </style>
