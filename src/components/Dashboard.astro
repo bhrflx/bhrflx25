@@ -18,6 +18,12 @@ import Work from "./dashboard/Work.astro";
 
 <script>
     document.addEventListener("keyup", (e) => {
+        const isMobile = window.matchMedia(
+            "(hover: none) and (pointer: coarse)",
+        );
+
+        if (isMobile.matches) return;
+
         switch (e.code) {
             case "KeyW": {
                 window.location.href = "/work";

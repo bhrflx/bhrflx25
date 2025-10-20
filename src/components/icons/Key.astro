@@ -53,7 +53,7 @@ const { key, code } = Astro.props;
             oklch(0 0 0) 15%,
             oklch(0.5208 0 0) 85%
         );
-        box-shadow: 0 2px 10px oklch(0 0 0 / 0.5);
+        box-shadow: 0 2px 10px oklch(0 0 0 / 1);
         transition: scale var(--spring-duration) var(--spring-easing);
 
         opacity: 0.5;
@@ -101,5 +101,11 @@ const { key, code } = Astro.props;
         text-box: trim-both cap alphabetic;
         font-size: 14px;
         color: var(--fg);
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+        .key {
+            display: none;
+        }
     }
 </style>
