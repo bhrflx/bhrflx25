@@ -1,0 +1,136 @@
+---
+import Back from "../components/input/Back.astro";
+import Layout from "../layouts/Layout.astro";
+import { Photo } from "../components/icons";
+import munich from "../assets/photography/munich.png";
+import barcelona from "../assets/photography/barcelona.png";
+import beach from "../assets/photography/keras.png";
+---
+
+<Layout>
+    <section>
+        <header>
+            <Back />
+            <h1>Photography</h1>
+        </header>
+        <div class="photos">
+            <div class="photo__bottom">
+                <Photo src={beach} alt="A beach at sunset." />
+            </div>
+            <div class="photo__middle">
+                <Photo
+                    src={barcelona}
+                    alt="A narrow alleyway in Barcelona, a young boy in a green outfit walking through the center."
+                />
+            </div>
+            <div class="photo__top">
+                <Photo
+                    src={munich}
+                    alt="View of the Olympiadorf Wohnanlage in Munich, Germany at night."
+                />
+            </div>
+        </div>
+        <h2>Coming soon</h2>
+        <p>
+            Photography is one of my biggest passions besides coding. Here you
+            will soon find a collection of images I am especially proud of.
+            Until then, Check out my Instagram account <a
+                href="https://www.instagram.com/vagabond.bear/"
+                >@vagabond.bear</a
+            >.
+        </p>
+    </section>
+</Layout>
+
+<style>
+    section {
+        padding: 24px;
+        overflow: hidden;
+
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+
+        color: var(--fg);
+
+        background-color: var(--container);
+        border: 1px solid var(--container-stroke);
+        border-radius: 42px;
+        box-shadow: 0px 2px 4px oklch(0 0 0 / 0.25) inset;
+    }
+
+    header {
+        width: 100%;
+
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+    }
+
+    h1 {
+        margin: 0;
+
+        font-size: 16px;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: var(--fg);
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 32px;
+        font-weight: 400;
+        text-align: center;
+        text-transform: uppercase;
+        color: var(--fg);
+    }
+
+    p {
+        margin: 0;
+        max-width: 800px;
+
+        font-size: 12px;
+        text-align: center;
+        color: var(--fg);
+    }
+
+    a {
+        font: inherit;
+        color: var(--fg);
+    }
+
+    .photos {
+        position: relative;
+        isolation: isolate;
+
+        width: 100%;
+        aspect-ratio: 1;
+        max-width: 400px;
+
+        & > .photo__bottom {
+            position: absolute;
+            inset: 20% auto auto 5%;
+            width: 50%;
+
+            rotate: -4deg;
+        }
+
+        & > .photo__middle {
+            position: absolute;
+            inset: 5% 5% auto auto;
+            width: 50%;
+            rotate: 5deg;
+        }
+
+        & > .photo__top {
+            position: absolute;
+            inset: 30% auto auto 25%;
+            width: 50%;
+            rotate: 8deg;
+        }
+    }
+</style>
