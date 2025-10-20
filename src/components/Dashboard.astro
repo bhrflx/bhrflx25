@@ -1,63 +1,39 @@
 ---
-import { Image } from "astro:assets";
-import { Book, Folder, Key, Photo } from "../components/icons";
-import portrait from "../assets/portrait.png";
-import beach from "../assets/photography/keras.png";
-import house from "../assets/photography/chania.png";
-import Link from "./input/Link.astro";
+import About from "./dashboard/About.astro";
+import Bobr from "./dashboard/Bobr.astro";
+import Photography from "./dashboard/Photography.astro";
+import Socials from "./dashboard/Socials.astro";
+import Status from "./dashboard/Status.astro";
+import Work from "./dashboard/Work.astro";
 ---
 
 <section>
-    <div class="box about">
-        <h1><b>Hi!</b><br /> I'm Felix.</h1>
-        <p>
-            I’m a full-stack software developer and communication designer from
-            Konstanz, DE. I love creating delightful, tailour-made web
-            experiences. I currently work at Büro Bobr as Head of Development.
-        </p>
-        <Image
-            src={portrait}
-            alt="Portrait of Felix Bahr"
-            layout="constrained"
-            fit="contain"
-        />
-        <Link label="Learn more" href="about" />
-    </div>
-    <div class="box center">
-        <div class="folders">
-            <div class="folder__bottom">
-                <Folder />
-            </div>
-            <div class="book__bottom">
-                <Book colour="red" />
-            </div>
-            <div class="book__top">
-                <Book colour="blue" />
-            </div>
-            <div class="folder__top">
-                <Folder />
-            </div>
-        </div>
-        <a href="/work">
-            <Key keyCode="W" />
-            <span>Work</span>
-        </a>
-    </div>
-    <div class="box center">
-        <div class="photos">
-            <div class="photo__bottom">
-                <Photo src={beach} alt="A beach at sunset" />
-            </div>
-            <div class="photo__top">
-                <Photo src={house} alt="Colourful houses in Chania" />
-            </div>
-        </div>
-        <a href="/work">
-            <Key keyCode="P" />
-            <span>Photography</span>
-        </a>
-    </div>
+    <About />
+    <Work />
+    <Photography />
+    <Status status="available" />
+    <Socials />
+    <Bobr />
 </section>
+
+<script>
+    document.addEventListener("keyup", (e) => {
+        switch (e.code) {
+            case "KeyW": {
+                window.location.href = "/work";
+                break;
+            }
+            case "KeyP": {
+                window.location.href = "/photography";
+                break;
+            }
+            case "KeyB": {
+                window.location.href = "https://bobr.digital";
+                break;
+            }
+        }
+    });
+</script>
 
 <style>
     section {
@@ -67,126 +43,7 @@ import Link from "./input/Link.astro";
         display: grid;
         gap: 12px;
         grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
-        grid-template-rows: repeat(3, auto);
-    }
-
-    h1 {
-        margin: 0;
-
-        font-size: 32px;
-        font-weight: 400;
-        color: var(--fg);
-        text-transform: uppercase;
-
-        & > b {
-            font-weight: 700;
-        }
-    }
-
-    p {
-        margin: 0;
-
-        font-size: 12px;
-        font-weight: 300;
-        line-height: 1.5;
-        color: var(--fg);
-        text-transform: uppercase;
-    }
-
-    a {
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        gap: 10px;
-
-        color: var(--fg);
-        font-size: 20px;
-        text-decoration: none;
-        text-transform: uppercase;
-    }
-
-    .box {
-        padding: 24px;
-        overflow: hidden;
-
-        display: flex;
-        flex-flow: column nowrap;
-        gap: 12px;
-
-        background-color: var(--container);
-        border: 1px solid var(--container-stroke);
-        border-radius: 42px;
-        box-shadow: 0px 2px 4px oklch(0 0 0 / 0.25) inset;
-
-        & > img {
-            max-width: 100%;
-        }
-
-        &.center {
-            align-items: center;
-        }
-    }
-
-    .folders {
-        position: relative;
-        isolation: isolate;
-
-        width: 100%;
-        max-width: 400px;
-        aspect-ratio: 1;
-        padding: 24px;
-
-        & .folder__bottom {
-            position: absolute;
-            inset: auto auto 10% 0;
-            width: 90%;
-            rotate: 6deg;
-        }
-
-        & .book__bottom {
-            position: absolute;
-            inset: auto auto 12% 10%;
-            width: 60%;
-            rotate: -0.5deg;
-        }
-
-        & .book__top {
-            position: absolute;
-            inset: 10% 20% auto auto;
-            width: 60%;
-            rotate: 12deg;
-        }
-
-        & .folder__top {
-            position: absolute;
-            inset: auto 0 10% auto;
-            width: 90%;
-            rotate: -6deg;
-            filter: url(#filter);
-        }
-    }
-
-    .photos {
-        position: relative;
-        isolation: isolate;
-
-        width: 100%;
-        max-width: 400px;
-        aspect-ratio: 1;
-        padding: 24px;
-
-        & > .photo__bottom {
-            position: absolute;
-            inset: auto auto 12% 0;
-            width: 70%;
-            rotate: -2deg;
-        }
-
-        & > .photo__top {
-            position: absolute;
-            inset: 10% 5% auto auto;
-            width: 70%;
-            rotate: 12deg;
-        }
+        grid-template-rows: repeat(4, auto);
+        grid-template-areas: "about work photo" "about work photo" "about status bobr" "about contact bobr";
     }
 </style>

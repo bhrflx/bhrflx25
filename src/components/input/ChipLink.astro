@@ -1,0 +1,109 @@
+---
+import type { SvgComponent } from "astro/types";
+
+interface Props {
+    label: string;
+    href: string;
+    icon?: SvgComponent;
+}
+
+const { label, href, icon } = Astro.props;
+
+const Icon = icon;
+---
+
+<a href={href}>
+    <svg
+        viewBox="0 0 200 200"
+        xmlns="http://www.w3.org/2000/svg"
+        class="filter"
+    >
+        <filter id="noise">
+            <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.85"
+                numOctaves="3"
+                stitchTiles="stitch"
+            >
+            </feTurbulence>
+        </filter>
+    </svg>
+
+    <div>
+        {Icon && <Icon width={14} height={14} fill="currentColor" />}
+        <span>{label}</span>
+    </div>
+</a>
+
+<style>
+    a {
+        position: relative;
+
+        padding: 1px;
+        border-radius: 18px;
+        background: linear-gradient(
+            180deg,
+            oklch(0.74 0 0) 0%,
+            oklch(0.45 0 0) 100%
+        );
+        box-shadow: 0 10px 24px 0 oklch(0 0 0 / 0.5);
+        transition:
+            scale var(--spring-duration) var(--spring-easing),
+            box-shadow var(--spring-duration) var(--spring-easing);
+
+        font-size: 16px;
+        color: var(--fg);
+        text-decoration: none;
+        text-transform: uppercase;
+
+        &:hover {
+            scale: 0.98;
+            box-shadow: 0 8px 20px 0 oklch(0 0 0 / 0.5);
+        }
+
+        &:active {
+            scale: 0.95;
+            box-shadow: 0 2px 4px 0 oklch(0 0 0 / 0.5);
+        }
+    }
+
+    div {
+        position: relative;
+        overflow: clip;
+
+        padding: 5px 10px;
+        border-radius: 17px;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+
+        background: linear-gradient(
+            180deg,
+            oklch(0 0 0) 0%,
+            oklch(0.4091 0 0) 100%
+        );
+
+        ::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            filter: url(#noise) saturate(0) contrast(170%);
+            mix-blend-mode: hard-light;
+            opacity: 0.3;
+        }
+    }
+
+    span {
+        text-box: trim-both cap alphabetic;
+        font-size: 12px;
+    }
+
+    .filter {
+        width: 1px;
+        height: 1px;
+        position: absolute;
+        inset: 0;
+    }
+</style>

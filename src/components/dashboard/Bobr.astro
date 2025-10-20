@@ -1,0 +1,52 @@
+---
+import { Key } from "../../components/icons";
+import BobrLogo from "../icons/Bobr.astro";
+---
+
+<div class="box">
+    <div class="bobr">
+        <BobrLogo />
+    </div>
+    <a href="https://bobr.digital" target="_blank" referrerpolicy="no-referrer">
+        <Key key="B" code="KeyB" />
+        <span>Büro Bobr</span>
+    </a>
+</div>
+
+<style>
+    a {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        gap: 10px;
+
+        color: var(--fg);
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .box {
+        grid-area: bobr;
+
+        padding: 24px;
+        overflow: hidden;
+
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        gap: 12px;
+
+        background-color: var(--container);
+        border: 1px solid var(--container-stroke);
+        border-radius: 42px;
+        box-shadow: 0px 2px 4px oklch(0 0 0 / 0.25) inset;
+    }
+
+    .bobr {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>

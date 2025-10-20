@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+import portrait from "../../assets/portrait.png";
+import Link from "../input/Link.astro";
+---
+
+<div class="box">
+    <h1><b>Hi!</b><br /> I'm Felix.</h1>
+    <p>
+        I’m a full-stack software developer and communication designer from
+        Konstanz, DE. I love creating delightful, tailour-made web experiences.
+        I currently work at Büro Bobr as Head of Development.
+    </p>
+    <Image
+        src={portrait}
+        alt="Portrait of Felix Bahr"
+        layout="constrained"
+        fit="contain"
+    />
+    <Link label="Learn more" href="about" />
+</div>
+
+<style>
+    h1 {
+        margin: 0;
+
+        font-size: 32px;
+        font-weight: 400;
+        color: var(--fg);
+        text-transform: uppercase;
+
+        & > b {
+            font-weight: 700;
+        }
+    }
+
+    p {
+        margin: 0;
+
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 1.5;
+        color: var(--fg);
+        text-transform: uppercase;
+    }
+
+    .box {
+        grid-area: about;
+
+        padding: 24px;
+        overflow: hidden;
+
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 12px;
+
+        background-color: var(--container);
+        border: 1px solid var(--container-stroke);
+        border-radius: 42px;
+        box-shadow: 0px 2px 4px oklch(0 0 0 / 0.25) inset;
+
+        & > img {
+            max-width: 100%;
+        }
+    }
+</style>

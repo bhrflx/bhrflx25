@@ -1,0 +1,75 @@
+---
+import house from "../../assets/photography/chania.png";
+import beach from "../../assets/photography/keras.png";
+import { Key, Photo } from "../../components/icons";
+---
+
+<div class="box">
+    <div class="photos">
+        <div class="photo__bottom">
+            <Photo src={beach} alt="A beach at sunset" />
+        </div>
+        <div class="photo__top">
+            <Photo src={house} alt="Colourful houses in Chania" />
+        </div>
+    </div>
+    <a href="/work">
+        <Key key="P" code="KeyP" />
+        <span>Photography</span>
+    </a>
+</div>
+
+<style>
+    a {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        gap: 10px;
+
+        color: var(--fg);
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .box {
+        grid-area: photo;
+
+        padding: 24px;
+        overflow: hidden;
+
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        gap: 12px;
+
+        background-color: var(--container);
+        border: 1px solid var(--container-stroke);
+        border-radius: 42px;
+        box-shadow: 0px 2px 4px oklch(0 0 0 / 0.25) inset;
+    }
+
+    .photos {
+        position: relative;
+        isolation: isolate;
+
+        width: 100%;
+        max-width: 400px;
+        aspect-ratio: 1;
+        padding: 24px;
+
+        & > .photo__bottom {
+            position: absolute;
+            inset: auto auto 12% 0;
+            width: 70%;
+            rotate: -2deg;
+        }
+
+        & > .photo__top {
+            position: absolute;
+            inset: 10% 5% auto auto;
+            width: 70%;
+            rotate: 12deg;
+        }
+    }
+</style>
