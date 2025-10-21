@@ -13,23 +13,23 @@ const Icon = icon;
 ---
 
 <a href={href}>
-    <svg
-        viewBox="0 0 200 200"
-        xmlns="http://www.w3.org/2000/svg"
-        class="filter"
-    >
-        <filter id="noise">
-            <feTurbulence
-                type="fractalNoise"
-                baseFrequency="0.85"
-                numOctaves="3"
-                stitchTiles="stitch"
-            >
-            </feTurbulence>
-        </filter>
-    </svg>
-
     <div>
+        <svg
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+            class="filter"
+        >
+            <filter id="noise">
+                <feTurbulence
+                    type="fractalNoise"
+                    baseFrequency="0.85"
+                    numOctaves="3"
+                    stitchTiles="stitch"
+                >
+                </feTurbulence>
+            </filter>
+        </svg>
+
         {Icon && <Icon width={14} height={14} fill="currentColor" />}
         <span>{label}</span>
     </div>
@@ -37,8 +37,6 @@ const Icon = icon;
 
 <style>
     a {
-        position: relative;
-
         padding: 1px;
         border-radius: 18px;
         background: linear-gradient(

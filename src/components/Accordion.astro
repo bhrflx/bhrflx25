@@ -1,0 +1,111 @@
+---
+import Minus from "../assets/minus.svg";
+import Plus from "../assets/plus.svg";
+
+interface Props {
+    heading: string;
+}
+
+const { heading } = Astro.props;
+---
+
+<details>
+    <summary>
+        <h3>{heading}</h3>
+        <div class="toggle">
+            <Plus
+                width={16}
+                height={16}
+                fill="currentColor"
+                class="toggle__plus"
+            />
+            <Minus
+                width={16}
+                height={16}
+                fill="currentColor"
+                class="toggle__minus"
+            />
+        </div>
+    </summary>
+    <slot />
+</details>
+
+<style>
+    details {
+        overflow: hidden;
+        transition: height var(--spring-duration) var(--spring-easing);
+
+        border-radius: 18px;
+        background-color: oklch(0.27 0 0);
+    }
+
+    details::details-content {
+        block-size: 0;
+        scale: 0.9;
+        opacity: 0;
+
+        font-size: 12px;
+        line-height: 1.5;
+        font-weight: 400;
+        color: var(--fg);
+
+        transition-property: block-size, scale, opacity, content-visibility;
+        transition-duration: var(--spring-duration);
+        transition-timing-function: var(--spring-easing);
+        transition-behavior: allow-discrete;
+    }
+
+    details[open]::details-content {
+        block-size: auto;
+        scale: 1;
+        opacity: 1;
+
+        padding: 18px;
+    }
+
+    summary {
+        list-style: none;
+        padding-block: 5px;
+        padding-inline: 18px 5px;
+
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+
+        cursor: pointer;
+
+        & > h3 {
+            margin: 0;
+
+            font-size: 16px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+    }
+
+    .toggle {
+        padding: 12px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 13px;
+        background-color: oklch(0.31 0 0);
+    }
+
+    .toggle__minus {
+        display: none;
+    }
+
+    details[open] {
+        & .toggle__plus {
+            display: none;
+        }
+
+        & .toggle__minus {
+            display: block;
+        }
+    }
+</style>

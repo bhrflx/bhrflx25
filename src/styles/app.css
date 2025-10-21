@@ -5,6 +5,7 @@
 @layer base {
     :root {
         color-scheme: light dark;
+        interpolate-size: allow-keywords;
 
         --bg: light-dark(oklch(1 0 0), oklch(0.1776 0 0));
         --fg: light-dark(oklch(0.1776 0 0), oklch(1 0 0));

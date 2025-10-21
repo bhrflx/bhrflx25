@@ -1,0 +1,189 @@
+---
+import { Image } from "astro:assets";
+import portrait from "../assets/portrait.png";
+import Download from "../assets/download.svg";
+import Rocket from "../assets/rocket.svg";
+import Accordion from "../components/Accordion.astro";
+import Back from "../components/input/Back.astro";
+import Link from "../components/input/Link.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+    <section>
+        <header>
+            <Back />
+            <h1>About</h1>
+        </header>
+        <div class="content">
+            <Image
+                src={portrait}
+                alt="Portrait of Felix Bahr"
+                layout="constrained"
+                fit="contain"
+                class="portrait"
+            />
+            <div class="info">
+                <h2>About me</h2>
+                <p>
+                    Deserunt ex labore sit laboris anim aliquip incididunt duis
+                    ullamco aliquip reprehenderit. Aliqua aliqua pariatur
+                    nostrud quis exercitation et cupidatat tempor do minim
+                    laborum amet ad cillum. Nulla anim ipsum veniam. Irure est
+                    sit sint magna qui qui veniam ad laboris aliqua deserunt
+                    elit in. Aliqua sunt fugiat aliquip est veniam aute aliquip
+                    non. Fugiat dolore cupidatat reprehenderit eu magna magna
+                    pariatur adipisicing tempor officia.
+                </p>
+                <div class="accordions">
+                    <Accordion heading="Things I'm good at">
+                        Exercitation nulla do quis incididunt consectetur aute
+                        non et adipisicing tempor laborum. Nulla ipsum sunt
+                        eiusmod quis velit aliquip proident nulla enim quis aute
+                        dolore ea nisi deserunt. Fugiat aliqua cupidatat duis
+                        laboris amet cillum quis et cillum et ut elit elit.
+                        Occaecat ea adipisicing commodo nostrud.
+                    </Accordion>
+                    <Accordion heading="Things I like">
+                        Exercitation nulla do quis incididunt consectetur aute
+                        non et adipisicing tempor laborum. Nulla ipsum sunt
+                        eiusmod quis velit aliquip proident nulla enim quis aute
+                        dolore ea nisi deserunt. Fugiat aliqua cupidatat duis
+                        laboris amet cillum quis et cillum et ut elit elit.
+                        Occaecat ea adipisicing commodo nostrud.
+                    </Accordion>
+                    <Accordion heading="Things I'm learning">
+                        Exercitation nulla do quis incididunt consectetur aute
+                        non et adipisicing tempor laborum. Nulla ipsum sunt
+                        eiusmod quis velit aliquip proident nulla enim quis aute
+                        dolore ea nisi deserunt. Fugiat aliqua cupidatat duis
+                        laboris amet cillum quis et cillum et ut elit elit.
+                        Occaecat ea adipisicing commodo nostrud.
+                    </Accordion>
+                </div>
+                <div class="actions">
+                    <Link
+                        label="CV"
+                        href="mailto:hello@felixbahr.com"
+                        icon={Download}
+                    />
+                    <Link
+                        label="Let's start something new"
+                        href="mailto:hello@felixbahr.com"
+                        icon={Rocket}
+                        stretch
+                    />
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    section {
+        width: 100%;
+        max-width: 1200px;
+        padding: 24px;
+        overflow: hidden;
+
+        height: 100%;
+
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+
+        color: var(--fg);
+
+        background-color: var(--container);
+        border: 1px solid var(--container-stroke);
+        border-radius: 42px;
+        box-shadow: 0px 2px 4px oklch(0 0 0 / 0.25) inset;
+    }
+
+    header {
+        width: 100%;
+
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+    }
+
+    h1 {
+        margin: 0;
+
+        font-size: 16px;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: var(--fg);
+    }
+
+    h2 {
+        margin: 0;
+
+        font-size: 32px;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: var(--fg);
+    }
+
+    p {
+        margin: 0;
+
+        font-size: 12px;
+        line-height: 1.5;
+        color: var(--fg);
+    }
+
+    .content {
+        flex: 1;
+
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .info {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 12px;
+    }
+
+    .accordions {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 5px;
+    }
+
+    .actions {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 12px;
+    }
+
+    @media screen and (min-width: 640px) {
+        section {
+            height: auto;
+        }
+
+        .content {
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            grid-template-areas: "image text text";
+        }
+
+        .portrait {
+            grid-area: image;
+        }
+
+        .info {
+            grid-area: text;
+        }
+
+        .actions {
+            flex-flow: row wrap;
+        }
+    }
+</style>
