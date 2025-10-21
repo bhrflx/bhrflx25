@@ -1,6 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 
 interface Props {
     src: ImageMetadata;
@@ -14,7 +14,12 @@ const { src, alt } = Astro.props;
     <div class="highlight__outer">
         <div class="border">
             <div class="highlight__inner">
-                <Image src={src} alt={alt} layout="constrained" />
+                <Image
+                    src={src}
+                    alt={alt}
+                    layout="constrained"
+                    loading="eager"
+                />
             </div>
         </div>
     </div>
