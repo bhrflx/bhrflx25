@@ -1,38 +1,68 @@
 ---
+import type { SvgComponent } from "astro/types";
+
 interface Props {
     label: string;
     href: string;
+    icon?: SvgComponent;
+    stretch?: boolean;
+    key?: string;
+    code?: string;
 }
 
-const { label, href } = Astro.props;
+const { label, href, icon, stretch = false, key, code } = Astro.props;
+
+const Icon = icon;
 ---
 
-<a href={href}>
-    <svg
-        viewBox="0 0 200 200"
-        xmlns="http://www.w3.org/2000/svg"
-        class="filter"
-    >
-        <filter id="noise">
-            <feTurbulence
-                type="fractalNoise"
-                baseFrequency="0.85"
-                numOctaves="3"
-                stitchTiles="stitch"
-            >
-            </feTurbulence>
-        </filter>
-    </svg>
-
+<a href={href} class:list={["link", { stretch }]} data-code={code}>
     <div>
+        <svg
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+            class="filter"
+        >
+            <filter id="noise">
+                <feTurbulence
+                    type="fractalNoise"
+                    baseFrequency="0.85"
+                    numOctaves="3"
+                    stitchTiles="stitch"
+                >
+                </feTurbulence>
+            </filter>
+        </svg>
+
+        {Icon && <Icon width={20} height={20} fill="currentColor" />}
         <span>{label}</span>
+        {key && <span class="key">[{key}]</span>}
     </div>
 </a>
 
-<style>
-    a {
-        position: relative;
+<script>
+    const links = document.querySelectorAll("a.link");
 
+    document.addEventListener("keydown", (e) => {
+        links.forEach((link) => {
+            if (link instanceof HTMLAnchorElement) {
+                const keyCode = link.dataset.code;
+
+                if (keyCode && e.code === keyCode) {
+                    link.classList.add("pressed");
+                }
+            }
+        });
+    });
+
+    document.addEventListener("keyup", () => {
+        links.forEach((link) => {
+            link.classList.remove("pressed");
+        });
+    });
+</script>
+
+<style>
+    .link {
         padding: 1px;
         border-radius: 18px;
         background: linear-gradient(
@@ -61,16 +91,27 @@ const { label, href } = Astro.props;
         }
     }
 
+    .link.stretch {
+        flex: 1;
+    }
+
+    .link.pressed {
+        scale: 0.95;
+        box-shadow: 0 2px 4px 0 oklch(0 0 0 / 0.5);
+    }
+
     div {
         position: relative;
+        height: 100%;
         overflow: clip;
 
-        padding: 18px 24px;
+        padding: 16px 20px;
         border-radius: 17px;
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
         justify-content: center;
+        gap: 5px;
 
         background: linear-gradient(
             180deg,
@@ -78,7 +119,7 @@ const { label, href } = Astro.props;
             oklch(0.4091 0 0) 100%
         );
 
-        ::after {
+        &::after {
             content: "";
             position: absolute;
             inset: 0;
@@ -92,10 +133,25 @@ const { label, href } = Astro.props;
         text-box: trim-both cap alphabetic;
     }
 
+    .key {
+        display: none;
+    }
+
     .filter {
         width: 1px;
         height: 1px;
         position: absolute;
         inset: 0;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        .key {
+            margin-right: -3ch;
+            display: inline-block;
+
+            font-size: 12px;
+            font-weight: 200;
+            color: oklch(0.7 0 0);
+        }
     }
 </style>

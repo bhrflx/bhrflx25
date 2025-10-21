@@ -25,6 +25,10 @@ import Work from "./dashboard/Work.astro";
         if (isMobile.matches) return;
 
         switch (e.code) {
+            case "KeyA": {
+                window.location.href = "/about";
+                break;
+            }
             case "KeyW": {
                 window.location.href = "/work";
                 break;
