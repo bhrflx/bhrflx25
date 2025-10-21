@@ -4,13 +4,13 @@
 
 @layer base {
     :root {
-        color-scheme: light dark;
+        color-scheme: only dark;
         interpolate-size: allow-keywords;
 
-        --bg: light-dark(oklch(1 0 0), oklch(0.1776 0 0));
-        --fg: light-dark(oklch(0.1776 0 0), oklch(1 0 0));
-        --container: light-dark(oklch(0.791 0 0), oklch(0.209 0 0));
-        --container-stroke: light-dark(oklch(0.7273 0 0), oklch(0.2727 0 0));
+        --bg: oklch(0.1776 0 0);
+        --fg: oklch(1 0 0);
+        --container: oklch(0.209 0 0);
+        --container-stroke: oklch(0.2727 0 0);
 
         --spring-easing: linear(
             0,
