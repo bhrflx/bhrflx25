@@ -1,0 +1,126 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import ExternalLink from "../input/ExternalLink.astro";
+
+interface Props {
+    data: CollectionEntry<"projects">["data"];
+}
+
+const { data } = Astro.props;
+---
+
+<li class="project">
+    <Image src={data.image.src} alt={data.image.alt} class="cover" />
+    <div class="info">
+        <h3>{data.title}</h3>
+        <ExternalLink href={data.url} />
+    </div>
+</li>
+
+<style>
+    h3 {
+        margin: 0;
+
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--fg);
+        text-transform: uppercase;
+
+        text-box: trim-both cap alphabetic;
+    }
+
+    .project {
+        list-style: none;
+        position: relative;
+        isolation: isolate;
+
+        overflow: clip;
+        padding: 1px;
+
+        display: flex;
+
+        border-radius: 18px;
+        background: linear-gradient(
+            180deg,
+            oklch(0.57 0 0) 0%,
+            oklch(0.43 0 0) 100%
+        );
+
+        box-shadow: 0px 4px 12px oklch(0 0 0 / 0.25);
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: auto 1px 1px 1px;
+            height: 40%;
+            z-index: 0;
+
+            border-radius: 17px;
+            background-color: oklch(0 0 0 / 0.5);
+            mask: linear-gradient(180deg, transparent 0%, oklch(0 0 0) 90%);
+            backdrop-filter: blur(5px);
+        }
+    }
+
+    .cover {
+        border-radius: 17px;
+    }
+
+    .info {
+        position: absolute;
+        inset: auto 0 0 0;
+        padding: 12px;
+        z-index: 1;
+
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    /*.tag {
+        list-style: none;
+        padding: 1px;
+
+        display: flex;
+
+        border-radius: 14px;
+        background: linear-gradient(
+            180deg,
+            oklch(0.43 0 0) 0%,
+            oklch(0.57 0 0) 100%
+        );
+
+        box-shadow: 0px 2px 4px oklch(0 0 0 / 0.5);
+    }
+
+    .tag__inner {
+        padding: 6px 12px;
+
+        display: flex;
+        align-items: center;
+
+        border-radius: 13px;
+        background: linear-gradient(
+            180deg,
+            oklch(0.57 0 0) 0%,
+            oklch(0.11 0 0) 100%
+        );
+
+        & > span {
+            font-size: 10px;
+            color: var(--fg);
+            text-transform: uppercase;
+        }
+    }*/
+
+    .filter {
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+    }
+</style>

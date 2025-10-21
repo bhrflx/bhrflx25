@@ -1,0 +1,115 @@
+---
+import { getCollection } from "astro:content";
+import Back from "../components/input/Back.astro";
+import Layout from "../layouts/Layout.astro";
+import ProjectTile from "../components/surfaces/ProjectTile.astro";
+
+const projects = (await getCollection("projects")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<Layout>
+    <section>
+        <header>
+            <Back />
+            <h1>Work</h1>
+        </header>
+        <div class="content">
+            <h2>All things digital</h2>
+            <p>
+                Fugiat nostrud adipisicing consectetur quis minim. Consequat
+                nulla officia pariatur irure duis sint in consequat in laboris
+                consequat cupidatat enim ullamco. Sit ad et laborum ad esse qui
+                est enim nulla nulla reprehenderit reprehenderit excepteur. Nisi
+                deserunt veniam cupidatat cupidatat nulla. Laborum voluptate
+                deserunt voluptate eu id excepteur nostrud velit sit proident
+                mollit mollit duis magna officia. Sunt reprehenderit duis
+                ullamco nisi cillum quis officia excepteur elit magna laborum.
+            </p>
+            <ul class="projects">
+                {projects.map((project) => <ProjectTile data={project.data} />)}
+            </ul>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    section {
+        width: 100%;
+        max-width: 1200px;
+        padding: 24px;
+        overflow: hidden;
+
+        height: 100%;
+
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+
+        color: var(--fg);
+
+        background-color: var(--container);
+        border: 1px solid var(--container-stroke);
+        border-radius: 42px;
+        box-shadow: 0px 2px 4px oklch(0 0 0 / 0.25) inset;
+    }
+
+    header {
+        width: 100%;
+
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+    }
+
+    h1 {
+        margin: 0;
+
+        font-size: 16px;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: var(--fg);
+    }
+
+    h2 {
+        margin: 0;
+
+        font-size: 32px;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: var(--fg);
+    }
+
+    p {
+        margin: 0;
+        font-size: 12px;
+        line-height: 1.5;
+        color: var(--fg);
+    }
+
+    .content {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 12px;
+    }
+
+    .projects {
+        margin: 0;
+        padding: 0;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+        gap: 24px;
+    }
+
+    @media screen and (min-width: 640px) {
+        section {
+            height: auto;
+        }
+    }
+</style>
