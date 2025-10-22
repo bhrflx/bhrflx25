@@ -1,8 +1,18 @@
 ---
 import ArrowLeft from "../../assets/icons/arrow-left.svg";
+
+interface Props {
+    href?: string;
+}
+
+const { href = "/" } = Astro.props;
 ---
 
-<a href="/" aria-label="Press your escape key to return home" class="back">
+<a
+    href={href}
+    aria-label="Press your escape key to return to the previous page."
+    class="back"
+>
     <div class="button">
         <svg
             viewBox="0 0 200 200"
@@ -43,9 +53,11 @@ import ArrowLeft from "../../assets/icons/arrow-left.svg";
     document.addEventListener("keyup", (e) => {
         buttons.forEach((button) => {
             button.classList.remove("pressed");
+            const link = button.closest("a");
+            const href = link?.href ?? "/";
 
             if (e.code === "Escape") {
-                window.location.href = "/";
+                window.location.href = href;
             }
         });
     });
