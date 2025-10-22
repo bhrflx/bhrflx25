@@ -1,5 +1,5 @@
 ---
-import Back from "../components/input/Back.astro";
+import Header from "../components/surfaces/Header.astro";
 import Layout from "../layouts/Layout.astro";
 import { Photo } from "../components/icons";
 import munich from "../assets/photography/munich.png";
@@ -9,10 +9,7 @@ import beach from "../assets/photography/keras.png";
 
 <Layout>
     <section>
-        <header>
-            <Back />
-            <h1>Photography</h1>
-        </header>
+        <Header title="Photography" />
         <div class="photos">
             <div class="photo__bottom">
                 <Photo src={beach} alt="A beach at sunset." />

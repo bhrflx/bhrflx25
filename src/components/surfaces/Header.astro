@@ -1,0 +1,38 @@
+---
+import Back from "../input/Back.astro";
+
+interface Props {
+    title: string;
+    href?: string;
+    headingLevel?: "h1" | "p"; // Sometimes we want the header to act as h1, other times a h1 is already present.
+}
+
+const { title, href = "/", headingLevel = "h1" } = Astro.props;
+const Heading = headingLevel;
+---
+
+<header>
+    <Back href={href} />
+    <Heading class="title">{title}</Heading>
+</header>
+
+<style>
+    header {
+        width: 100%;
+
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+    }
+
+    .title {
+        margin: 0;
+
+        font-size: 16px;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: var(--fg);
+    }
+</style>
