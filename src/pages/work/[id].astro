@@ -1,0 +1,230 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/surfaces/Header.astro";
+import ExternalLink from "../../components/input/ExternalLink.astro";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+    const projects = await getCollection("projects");
+    return projects.map((project) => ({
+        params: { id: project.id },
+        props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<Layout>
+    <section>
+        <div class="hero">
+            <Image
+                src={project.data.image.src}
+                alt={project.data.image.alt}
+                layout="full-width"
+                loading="eager"
+            />
+            <div class="header__container">
+                <Header
+                    title={project.data.title}
+                    href="/work"
+                    headingLevel="p"
+                />
+            </div>
+        </div>
+        <div class="content prose">
+            <h1>{project.data.title}</h1>
+            <div class="tags">
+                <div class="tag light">
+                    <div class="tag__inner light">
+                        <span>{project.data.pubDate.getFullYear()}</span>
+                    </div>
+                </div>
+                {
+                    project.data.tags.map((tag) => (
+                        <div class="tag dark">
+                            <div class="tag__inner dark">
+                                <span>{tag}</span>
+                            </div>
+                        </div>
+                    ))
+                }
+                <ExternalLink href={project.data.url} />
+            </div>
+            <Content />
+        </div>
+    </section>
+</Layout>
+
+<style>
+    section {
+        width: 100%;
+        max-width: 1200px;
+        overflow: hidden;
+
+        height: 100%;
+
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+
+        color: var(--fg);
+
+        background-color: var(--container);
+        border: 1px solid var(--container-stroke);
+        border-radius: 42px;
+        box-shadow: 0px 2px 4px oklch(0 0 0 / 0.25) inset;
+    }
+
+    .hero {
+        position: relative;
+        isolation: isolate;
+
+        width: 100%;
+        height: 50dvh;
+
+        display: flex;
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+
+            mask: linear-gradient(
+                180deg,
+                oklch(0 0 0) 5%,
+                oklch(0 0 0 / 0) 30%
+            );
+            backdrop-filter: blur(5px);
+        }
+    }
+
+    .header__container {
+        position: absolute;
+        inset: 0 0 auto 0;
+        z-index: 2;
+
+        padding: 24px 24px 72px 24px;
+        display: flex;
+
+        background: linear-gradient(
+            180deg,
+            oklch(0 0 0) 0%,
+            oklch(0 0 0 / 0) 100%
+        );
+    }
+
+    .content {
+        width: 100%;
+        padding: 24px;
+
+        display: flex;
+        flex-flow: column nowrap;
+    }
+
+    .prose {
+        & :global(h1) {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        & :global(p) {
+            font-size: 14px;
+            font-weight: 200;
+            line-height: 1.5;
+        }
+
+        & :global(a) {
+            font: inherit;
+            color: var(--fg);
+        }
+    }
+
+    .tags {
+        width: 100%;
+        margin-block: 12px;
+
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 5px;
+    }
+
+    .tag {
+        list-style: none;
+        padding: 1px;
+
+        display: flex;
+
+        border-radius: 36px;
+        box-shadow: 0px 2px 4px oklch(0 0 0 / 0.5);
+
+        &.dark {
+            background: linear-gradient(
+                180deg,
+                oklch(0.57 0 0) 0%,
+                oklch(0.43 0 0) 100%
+            );
+        }
+
+        &.light {
+            background: linear-gradient(
+                180deg,
+                oklch(0.95 0 0) 0%,
+                oklch(0.29 0 0) 100%
+            );
+        }
+    }
+
+    .tag__inner {
+        padding: 13px 20px;
+
+        display: flex;
+        align-items: center;
+
+        border-radius: 36px;
+
+        &.dark {
+            color: var(--fg);
+            background: linear-gradient(
+                180deg,
+                oklch(0.11 0 0) 0%,
+                oklch(0.57 0 0) 100%
+            );
+        }
+
+        &.light {
+            color: var(--bg);
+            background: linear-gradient(
+                180deg,
+                oklch(0.42 0 0) 0%,
+                oklch(0.86 0 0) 100%
+            );
+        }
+
+        & > span {
+            text-box: trim-both cap alphabetic;
+
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+    }
+
+    @media screen and (min-width: 640px) {
+        section {
+            height: auto;
+        }
+
+        .tag__inner {
+            padding: 8px 12px;
+        }
+    }
+</style>

@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import Back from "../components/input/Back.astro";
-import Layout from "../layouts/Layout.astro";
-import ProjectTile from "../components/surfaces/ProjectTile.astro";
+import Header from "../../components/surfaces/Header.astro";
+import ProjectTile from "../../components/surfaces/ProjectTile.astro";
+import Layout from "../../layouts/Layout.astro";
 
 const projects = (await getCollection("projects")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -11,10 +11,7 @@ const projects = (await getCollection("projects")).sort(
 
 <Layout>
     <section>
-        <header>
-            <Back />
-            <h1>Work</h1>
-        </header>
+        <Header title="Work" />
         <div class="content">
             <h2>All things digital</h2>
             <p>
@@ -28,7 +25,11 @@ const projects = (await getCollection("projects")).sort(
                 ullamco nisi cillum quis officia excepteur elit magna laborum.
             </p>
             <ul class="projects">
-                {projects.map((project) => <ProjectTile data={project.data} />)}
+                {
+                    projects.map((project) => (
+                        <ProjectTile data={project.data} id={project.id} />
+                    ))
+                }
             </ul>
         </div>
     </section>

@@ -11,6 +11,7 @@ const projects = defineCollection({
       image: z.object({
         src: image(),
         alt: z.string(),
+        rawUrl: z.string(),
       }),
       tags: z.array(z.string()),
       url: z.string().url(),

@@ -5,9 +5,16 @@ pubDate: 2025-06-21
 image:
   src: "../assets/work/kunstclub-cover.png"
   alt: "Mockup of the Kunstclub Bayreuth e.V. website"
+  rawUrl: "/src/assets/work/kunstclub-cover.png"
 tags:
   - Branding
   - UI/UX
   - Development
 url: "https://kunstclub-bayreuth.de"
 ---
+
+Der Kunstclub Bayreuth e.V. ist ein neu gegründeter Verein, der sich der Förderung junger Menschen im Bereich Kunst und Kultur verschrieben hat.
+
+Für den Verein haben wir ein umfassendes Erscheinungsbild entwickelt, das mit kräftigen Farben, klaren Linien und charmanten Animationen verspielt und fröhlich, aber dennoch klar und übersichtlich ist. Teil des Logos und gleichzeitig Maskottchen des Kunstclubs ist die Katze, die mit ihrer Neugier und ihrem Selbstbewusstsein das verkörpert, was der Verein in jungen Menschen fördern möchte. Eine umfangreiche Sammlung von Katzenillustrationen gibt dem Verein die Flexibilität, Stimmungen und Aktivitäten zu kommunizieren und das Maskottchen für verschiedene Anlässe einzusetzen.
+
+Für die technische Umsetzung der Website haben wir uns für das Open-Source-Framework Astro entschieden, das dank integrierter Markdown-Unterstützung und automatischer Asset-Optimierung die Erstellung performanter statischer Seiten so einfach wie möglich macht.

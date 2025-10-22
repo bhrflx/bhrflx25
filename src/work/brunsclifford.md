@@ -5,6 +5,7 @@ pubDate: 2025-10-21
 image:
   src: "../assets/work/brunsclifford-cover.png"
   alt: "Mockup of the BrunsClifford Shop"
+  rawUrl: "/src/assets/work/brunsclifford-cover.png"
 tags:
   - Development
   - E-Commerce
