@@ -26,8 +26,12 @@ const projects = (await getCollection("projects")).sort(
             </p>
             <ul class="projects">
                 {
-                    projects.map((project) => (
-                        <ProjectTile data={project.data} id={project.id} />
+                    projects.map((project, index) => (
+                        <ProjectTile
+                            data={project.data}
+                            id={project.id}
+                            index={index}
+                        />
                     ))
                 }
             </ul>

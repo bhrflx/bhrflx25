@@ -1,15 +1,16 @@
 ---
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
-import ExternalLink from "../input/ExternalLink.astro";
 import { getAverageColor } from "../../utils/average-colour";
+import ExternalLink from "../input/ExternalLink.astro";
 
 interface Props {
     id: string;
     data: CollectionEntry<"projects">["data"];
+    index: number;
 }
 
-const { data, id } = Astro.props;
+const { data, id, index } = Astro.props;
 
 const { r, g, b } = await getAverageColor(data.image.rawUrl);
 const shadowColor = `rgb(${r} ${g} ${b})`;
@@ -30,7 +31,7 @@ const shadowColor = `rgb(${r} ${g} ${b})`;
     </a>
 </li>
 
-<style define:vars={{ shadowColor }}>
+<style define:vars={{ shadowColor, index, id }}>
     a {
         text-decoration: none;
     }
@@ -92,6 +93,7 @@ const shadowColor = `rgb(${r} ${g} ${b})`;
 
     .cover {
         border-radius: 17px;
+        view-transition-name: var(--id);
     }
 
     .info {

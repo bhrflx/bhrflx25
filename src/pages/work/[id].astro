@@ -58,7 +58,7 @@ const { Content } = await render(project);
     </section>
 </Layout>
 
-<style>
+<style define:vars={{ id: project.id }}>
     section {
         width: 100%;
         max-width: 1200px;
@@ -88,6 +88,8 @@ const { Content } = await render(project);
         height: 50dvh;
 
         display: flex;
+
+        view-transition-name: var(--id);
 
         &::after {
             content: "";
