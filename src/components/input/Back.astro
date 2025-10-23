@@ -39,6 +39,7 @@ const { href = "/" } = Astro.props;
 
 <script>
     const buttons = document.querySelectorAll(".back .button");
+    const links = document.querySelectorAll(".back");
 
     document.addEventListener("keydown", (e) => {
         buttons.forEach((button) => {
@@ -59,6 +60,18 @@ const { href = "/" } = Astro.props;
             if (e.code === "Escape") {
                 window.location.href = href;
             }
+        });
+    });
+
+    links.forEach((link) => {
+        if (!(link instanceof HTMLAnchorElement)) return;
+
+        link.addEventListener("pointerdown", () => {
+            navigator.vibrate(5);
+        });
+
+        link.addEventListener("pointerup", () => {
+            navigator.vibrate(10);
         });
     });
 </script>

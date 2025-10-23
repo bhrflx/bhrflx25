@@ -9,7 +9,7 @@ interface Props {
 const { heading } = Astro.props;
 ---
 
-<details>
+<details class="accordion">
     <summary>
         <h3>{heading}</h3>
         <div class="toggle">
@@ -29,6 +29,18 @@ const { heading } = Astro.props;
     </summary>
     <slot />
 </details>
+
+<script>
+    const accordions = document.querySelectorAll("details.accordion");
+
+    accordions.forEach((accordion) => {
+        if (!(accordion instanceof HTMLDetailsElement)) return;
+
+        accordion.addEventListener("toggle", () => {
+            navigator.vibrate(5);
+        });
+    });
+</script>
 
 <style>
     details {

@@ -59,6 +59,18 @@ const Icon = icon;
             link.classList.remove("pressed");
         });
     });
+
+    links.forEach((link) => {
+        if (!(link instanceof HTMLAnchorElement)) return;
+
+        link.addEventListener("pointerdown", () => {
+            navigator.vibrate(5);
+        });
+
+        link.addEventListener("pointerup", () => {
+            navigator.vibrate(10);
+        });
+    });
 </script>
 
 <style>
