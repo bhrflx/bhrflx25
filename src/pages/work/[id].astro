@@ -127,33 +127,9 @@ const { Content } = await render(project);
         flex-flow: column nowrap;
     }
 
-    .prose {
-        & :global(h1) {
-            margin: 0;
-            font-size: 32px;
-            font-weight: 300;
-            text-transform: uppercase;
-        }
-
-        & :global(p) {
-            font-size: 14px;
-            font-weight: 200;
-            line-height: 1.5;
-        }
-
-        & :global(a) {
-            font: inherit;
-            color: var(--fg);
-        }
-
-        & :global(img) {
-            border-radius: 18px;
-        }
-    }
-
     .tags {
         width: 100%;
-        margin-block: 12px;
+        margin-bottom: 20px;
 
         display: flex;
         flex-flow: row wrap;

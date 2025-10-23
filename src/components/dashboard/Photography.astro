@@ -15,11 +15,19 @@ import { Key, Photo } from "../../components/icons";
     </div>
     <div class="label">
         <Key key="P" code="KeyP" />
-        <span>Photography</span>
+        <h2>Photography</h2>
     </div>
 </a>
 
 <style>
+    h2 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--fg);
+        text-transform: uppercase;
+    }
+
     .box {
         grid-area: photo;
 
@@ -32,10 +40,7 @@ import { Key, Photo } from "../../components/icons";
         justify-content: center;
         gap: 12px;
 
-        color: var(--fg);
-        font-size: 16px;
         text-decoration: none;
-        text-transform: uppercase;
 
         background-color: var(--container);
         border: 1px solid var(--container-stroke);

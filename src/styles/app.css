@@ -1,6 +1,6 @@
 @import "normalise.css" layer(normalise);
 
-@layer normalise, base;
+@layer normalise, base, typography;
 
 @layer base {
     :root {
@@ -81,5 +81,90 @@
 
     @view-transition {
         navigation: auto;
+    }
+
+    @media (prefers-reduced-motion) {
+        ::view-transition-group(*),
+        ::view-transition-old(*),
+        ::view-transition-new(*) {
+            animation: none !important;
+        }
+    }
+}
+
+@layer typography {
+    :where(p, a) {
+        margin: 0;
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 1.5;
+        color: var(--fg);
+    }
+
+    :where(h1) {
+        margin: 0;
+        font-size: 32px;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+
+    :where(h2) {
+        margin: 0;
+        font-size: 24px;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+
+    :where(h3) {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+
+    .prose {
+        & h1 {
+            margin-block: 12px;
+            font-size: 32px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        & h2 {
+            margin-block: 12px;
+            font-size: 24px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        & h3 {
+            margin-block: 4px;
+            font-size: 16px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        & p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+
+            &:has(+ p) {
+                margin-bottom: 12px;
+            }
+
+            &:has(+ :is(h1, h2, h3, h4, h5, h6)) {
+                margin-bottom: 32px;
+            }
+        }
+
+        & a {
+            font: inherit;
+            color: var(--fg);
+        }
+
+        & img {
+            border-radius: 18px;
+        }
     }
 }

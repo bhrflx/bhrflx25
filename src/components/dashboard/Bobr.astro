@@ -14,11 +14,19 @@ import BobrLogo from "../icons/Bobr.astro";
     </div>
     <div class="label">
         <Key key="B" code="KeyB" />
-        <span>Büro Bobr</span>
+        <h2>Büro Bobr</h2>
     </div>
 </a>
 
 <style>
+    h2 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--fg);
+        text-transform: uppercase;
+    }
+
     .box {
         grid-area: bobr;
 
@@ -31,10 +39,7 @@ import BobrLogo from "../icons/Bobr.astro";
         justify-content: center;
         gap: 12px;
 
-        color: var(--fg);
-        font-size: 16px;
         text-decoration: none;
-        text-transform: uppercase;
 
         background-color: var(--container);
         border: 1px solid var(--container-stroke);

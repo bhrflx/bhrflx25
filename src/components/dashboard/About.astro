@@ -4,7 +4,7 @@ import portrait from "../../assets/photography/portrait.png";
 import Link from "../input/Link.astro";
 ---
 
-<div class="box">
+<article class="box">
     <h1><b>Hi!</b><br /> I'm Felix.</h1>
     <p>
         I’m a full-stack software developer and communication designer from
@@ -20,7 +20,7 @@ import Link from "../input/Link.astro";
         class="portrait"
     />
     <Link label="Learn more" href="about" key="A" code="KeyA" />
-</div>
+</article>
 
 <style>
     h1 {
@@ -37,12 +37,6 @@ import Link from "../input/Link.astro";
     }
 
     p {
-        margin: 0;
-
-        font-size: 12px;
-        font-weight: 300;
-        line-height: 1.5;
-        color: var(--fg);
         text-transform: uppercase;
     }
 
