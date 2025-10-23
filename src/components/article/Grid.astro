@@ -1,0 +1,16 @@
+<div class="grid">
+    <slot />
+</div>
+
+<style>
+    .grid > :global(p) {
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+        gap: 12px;
+
+        & > :global(img) {
+            height: 100%;
+        }
+    }
+</style>

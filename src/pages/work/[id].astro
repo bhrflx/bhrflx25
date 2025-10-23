@@ -1,9 +1,9 @@
 ---
-import { getCollection, render } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import Header from "../../components/surfaces/Header.astro";
-import ExternalLink from "../../components/input/ExternalLink.astro";
 import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+import ExternalLink from "../../components/input/ExternalLink.astro";
+import Header from "../../components/surfaces/Header.astro";
+import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
     const projects = await getCollection("projects");
@@ -34,7 +34,7 @@ const { Content } = await render(project);
                 />
             </div>
         </div>
-        <div class="content prose">
+        <article class="content prose">
             <h1>{project.data.title}</h1>
             <div class="tags">
                 <div class="tag light">
@@ -54,7 +54,7 @@ const { Content } = await render(project);
                 <ExternalLink href={project.data.url} />
             </div>
             <Content />
-        </div>
+        </article>
     </section>
 </Layout>
 
@@ -144,6 +144,10 @@ const { Content } = await render(project);
         & :global(a) {
             font: inherit;
             color: var(--fg);
+        }
+
+        & :global(img) {
+            border-radius: 18px;
         }
     }
 

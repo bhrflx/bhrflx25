@@ -3,7 +3,7 @@ title: "BrunsClifford Online Shop"
 description: "Together with Monochroma Design, we made the vision of French avant-garde sportswear brand BrunsClifford for their new online shop come alive."
 pubDate: 2025-10-21
 image:
-  src: "../assets/work/brunsclifford-cover.png"
+  src: "../../assets/work/brunsclifford-cover.png"
   alt: "Mockup of the BrunsClifford Shop"
   rawUrl: "/src/assets/work/brunsclifford-cover.png"
 tags:
