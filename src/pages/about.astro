@@ -24,39 +24,86 @@ import Layout from "../layouts/Layout.astro";
             <div class="info">
                 <h2>About me</h2>
                 <p>
-                    Deserunt ex labore sit laboris anim aliquip incididunt duis
-                    ullamco aliquip reprehenderit. Aliqua aliqua pariatur
-                    nostrud quis exercitation et cupidatat tempor do minim
-                    laborum amet ad cillum. Nulla anim ipsum veniam. Irure est
-                    sit sint magna qui qui veniam ad laboris aliqua deserunt
-                    elit in. Aliqua sunt fugiat aliquip est veniam aute aliquip
-                    non. Fugiat dolore cupidatat reprehenderit eu magna magna
-                    pariatur adipisicing tempor officia.
+                    I'm something of a shapeshifter, moving fluently between the
+                    worlds of design and development. While studying for my
+                    design degree, I developed a desire to turn my ideas into
+                    functional products and put them in the hands of users to
+                    validate my concepts. I started teaching myself to code and
+                    discovered a new passion, which I continued after
+                    graduating. I can now look back on several years' experience
+                    in communication design and development.
+                </p>
+                <p>
+                    The web is my realm. I grew up with it and have always
+                    admired its endless possibilities. While web technology may
+                    not be the solution to every problem, the modern web can be
+                    used for a variety of purposes, which is why it forms the
+                    basis of most of my projects.
+                </p>
+                <p>
+                    I don't restrict myself to a specific technology stack; I
+                    choose the technology that is best suited to the project or
+                    client requirements. However, I do have my favourites:
+                    SvelteKit is usually my framework of choice for web projects
+                    and React Native for mobile applications.
                 </p>
                 <div class="accordions">
                     <Accordion heading="Things I'm good at">
-                        Exercitation nulla do quis incididunt consectetur aute
-                        non et adipisicing tempor laborum. Nulla ipsum sunt
-                        eiusmod quis velit aliquip proident nulla enim quis aute
-                        dolore ea nisi deserunt. Fugiat aliqua cupidatat duis
-                        laboris amet cillum quis et cillum et ut elit elit.
-                        Occaecat ea adipisicing commodo nostrud.
+                        <ul>
+                            <li>
+                                Learning and adapting to new technologies,
+                                programming languages and frameworks.
+                            </li>
+                            <li>
+                                Designing and developing well-thought-out
+                                interfaces.
+                            </li>
+                            <li>
+                                Leading and collaborating with multidisciplinary
+                                teams.
+                            </li>
+                            <li>
+                                Creating software tailored to specific target
+                                groups
+                            </li>
+                            <li>
+                                Finding the best technology stack for a specific
+                                use case or client.
+                            </li>
+                        </ul>
                     </Accordion>
-                    <Accordion heading="Things I like">
-                        Exercitation nulla do quis incididunt consectetur aute
-                        non et adipisicing tempor laborum. Nulla ipsum sunt
-                        eiusmod quis velit aliquip proident nulla enim quis aute
-                        dolore ea nisi deserunt. Fugiat aliqua cupidatat duis
-                        laboris amet cillum quis et cillum et ut elit elit.
-                        Occaecat ea adipisicing commodo nostrud.
+                    <Accordion heading="Tech I'm familiar with">
+                        <ul>
+                            <li>SvelteKit</li>
+                            <li>Astro</li>
+                            <li>React & Next.js</li>
+                            <li>React Native</li>
+                            <li>Typescript</li>
+                            <li>Javascript</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>REST APIs</li>
+                            <li>
+                                AI tools such as Cursor, ChatGPT, Replicate,
+                                etc.
+                            </li>
+                            <li>Sanity CMS</li>
+                            <li>Strapi CMS</li>
+                            <li>Git</li>
+                            <li>Adobe Creative Cloud</li>
+                            <li>Blender</li>
+                        </ul>
                     </Accordion>
                     <Accordion heading="Things I'm learning">
-                        Exercitation nulla do quis incididunt consectetur aute
-                        non et adipisicing tempor laborum. Nulla ipsum sunt
-                        eiusmod quis velit aliquip proident nulla enim quis aute
-                        dolore ea nisi deserunt. Fugiat aliqua cupidatat duis
-                        laboris amet cillum quis et cillum et ut elit elit.
-                        Occaecat ea adipisicing commodo nostrud.
+                        <ul>
+                            <li>neovim</li>
+                            <li>Effect.ts</li>
+                            <li>Cybersecurity</li>
+                            <li>Greek</li>
+                            <li>
+                                How to cope with the general state of the world
+                            </li>
+                        </ul>
                     </Accordion>
                 </div>
                 <div class="actions">
@@ -117,6 +164,37 @@ import Layout from "../layouts/Layout.astro";
         color: var(--fg);
     }
 
+    ul {
+        margin: 0;
+        padding: 0;
+
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 8px;
+    }
+
+    li {
+        list-style: none;
+
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        gap: 8px;
+
+        &::before {
+            content: url(../assets/icons/check.svg);
+
+            display: inline-block;
+            flex: 0 0 auto;
+
+            width: 20px;
+            height: 20px;
+
+            border-radius: 50%;
+            box-shadow: 0 2px 4px oklch(0 0 0 / 0.5);
+        }
+    }
+
     .content {
         flex: 1;
 
@@ -131,6 +209,7 @@ import Layout from "../layouts/Layout.astro";
     }
 
     .accordions {
+        padding-top: 12px;
         display: flex;
         flex-flow: column nowrap;
         gap: 5px;
