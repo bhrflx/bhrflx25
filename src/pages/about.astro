@@ -5,8 +5,8 @@ import Rocket from "../assets/icons/rocket.svg";
 import portrait from "../assets/photography/portrait.png";
 import Link from "../components/input/Link.astro";
 import Accordion from "../components/surfaces/Accordion.astro";
-import Layout from "../layouts/Layout.astro";
 import Header from "../components/surfaces/Header.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
@@ -140,6 +140,10 @@ import Header from "../components/surfaces/Header.astro";
         display: flex;
         flex-flow: column nowrap;
         gap: 12px;
+    }
+
+    .portrait {
+        view-transition-name: portrait;
     }
 
     @media screen and (min-width: 640px) {

@@ -78,4 +78,8 @@
     h6 {
         text-wrap: balance;
     }
+
+    @view-transition {
+        navigation: auto;
+    }
 }

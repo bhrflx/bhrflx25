@@ -17,6 +17,7 @@ import Link from "../input/Link.astro";
         layout="constrained"
         fit="contain"
         loading="eager"
+        class="portrait"
     />
     <Link label="Learn more" href="about" key="A" code="KeyA" />
 </div>
@@ -64,5 +65,9 @@ import Link from "../input/Link.astro";
         & > img {
             max-width: 100%;
         }
+    }
+
+    .portrait {
+        view-transition-name: portrait;
     }
 </style>
