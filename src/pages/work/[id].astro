@@ -25,6 +25,7 @@ const { Content } = await render(project);
                 alt={project.data.image.alt}
                 layout="full-width"
                 loading="eager"
+                class="hero__image"
             />
             <div class="header__container">
                 <Header
@@ -103,6 +104,10 @@ const { Content } = await render(project);
                 oklch(0 0 0 / 0) 30%
             );
             backdrop-filter: blur(5px);
+        }
+
+        & > hero__image {
+            border-radius: 42px 42px 0 0;
         }
     }
 
