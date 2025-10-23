@@ -14,6 +14,8 @@ const { data, id, index } = Astro.props;
 
 const { r, g, b } = await getAverageColor(data.image.rawUrl);
 const shadowColor = `rgb(${r} ${g} ${b})`;
+
+const loading = index < 4 ? "eager" : "lazy";
 ---
 
 <li class="project">
@@ -23,6 +25,7 @@ const shadowColor = `rgb(${r} ${g} ${b})`;
             alt={data.image.alt}
             class="cover"
             layout="constrained"
+            loading={loading}
         />
         <div class="info">
             <h3>{data.title}</h3>
