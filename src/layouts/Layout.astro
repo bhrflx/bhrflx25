@@ -1,11 +1,18 @@
 ---
 import Head from "../components/Head.astro";
 import "../styles/app.css";
+
+interface Props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en-GB">
-    <Head />
+    <Head title={title} description={description} />
     <body>
         <slot />
         <footer>
