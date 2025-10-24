@@ -14,6 +14,8 @@ export default defineConfig({
     objectFit: "cover",
   },
 
+  trailingSlash: "always",
+
   experimental: {
     fonts: [
       {
