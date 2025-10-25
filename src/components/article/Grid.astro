@@ -3,8 +3,20 @@
 </div>
 
 <style>
-    .grid > :global(p) {
+    .grid {
         margin-block: 12px;
+
+        &:has(+ is:(.grid, .row)) {
+            margin-bottom: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .grid > :global(p) {
+        margin: 0;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
         gap: 12px;
