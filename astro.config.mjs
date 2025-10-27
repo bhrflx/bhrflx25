@@ -19,7 +19,7 @@ export default defineConfig({
   experimental: {
     fonts: [
       {
-        provider: fontProviders.fontshare(),
+        provider: fontProviders.fontsource(),
         name: "JetBrains Mono",
         cssVariable: "--jetbrains-mono",
         weights: ["100 900"],
