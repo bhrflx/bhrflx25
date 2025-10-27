@@ -1,0 +1,26 @@
+---
+title: "Leon Reeb"
+description: "For Constance-based information designer Leon Reeb I realised his vision for his new portfolio website."
+pubDate: 2024-12-22
+image:
+  src: "../../assets/work/leonreeb-cover.png"
+  alt: "Mockup of the Dashboard of the KRAU MVP application"
+  rawUrl: "/src/assets/work/leonreeb-cover.png"
+tags:
+  - Development
+url: "https://leonreeb.com/"
+---
+import Row from '../../components/article/Row.astro'
+
+Leon Reeb is an information designer from Constance, Germany. His work ranges from type- and editorial design to physical design pieces. He approached me with a vision for his new portfolio website, which challenges typical website structures through the ways in which users interact with content and navigate between pages. The homepage features a simple slideshow with full-screen cover images for all projects. Clicking on these images reveals the project page, consisting of a large stack of images that can be zoomed to fill the width of the screen. Accordions that can be opened to reveal information about the project, an index of all projects or information about Leon Reeb himself are accommodated at the edges of the screen.
+Leon's vision posed a technical challenge for me, as it required me to rethink how websites usually work and find ways of implementing complex features such as full-page previews when hovering over a project in the index. SvelteKit helped me to achieve this thanks to its rich feature set, including shallow routing and performant server-side rendering (SSR).
+
+## Techstack
+- SvelteKit
+- GSAP
+- Netlify
+
+<Row>
+    ![iPhone Mockup of the home page of leonreeb.com](../../assets/work/leonreeb-home.png)
+    ![iPhone and iPad Mockups of the project page of leonreeb.com](../../assets/work/leonreeb-project.png)
+</Row>
