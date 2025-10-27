@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import Download from "../assets/icons/download.svg";
+import UserPlus from "../assets/icons/user-circle-plus.svg";
 import Rocket from "../assets/icons/rocket.svg";
 import portrait from "../assets/photography/portrait.png";
 import Header from "../components/navigation/Header.astro";
@@ -120,13 +120,14 @@ import Layout from "../layouts/Layout.astro";
                 </div>
                 <div class="actions">
                     <Link
-                        label="CV"
-                        href="mailto:hello@felixbahr.com"
-                        icon={Download}
+                        label="Let's connect"
+                        href="https://www.linkedin.com/in/felix-bahr-99bb93232/"
+                        icon={UserPlus}
+                        stretch
                     />
                     <Link
                         label="Create something new"
-                        href="mailto:hello@felixbahr.com"
+                        href="mailto:hello@felixbahr.com?subject=Let's%20build%20something%20together%2C%20Felix!&body=Hi%20Felix%2C%20I%20have%20an%20idea..."
                         icon={Rocket}
                         stretch
                     />
