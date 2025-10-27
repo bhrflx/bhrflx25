@@ -8,7 +8,7 @@ St.-Johann-Gasse 7
 
 Tel: +49 1590 1175753
 
-[hi@felixbahr.com](mailto:hi@felixbahr.com)
+[hello@felixbahr.com](mailto:hello@felixbahr.com)
 
 # Disclaimer - rechtliche Hinweise
 
