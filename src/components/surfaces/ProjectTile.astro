@@ -54,6 +54,7 @@ const loading = index < 4 ? "eager" : "lazy";
         list-style: none;
         position: relative;
         isolation: isolate;
+        overflow: clip;
 
         padding: 1px;
 
@@ -81,15 +82,13 @@ const loading = index < 4 ? "eager" : "lazy";
         &::after {
             content: "";
             position: absolute;
-            inset: auto -2px -2px -2px;
-            height: 40%;
+            inset: -2px;
             z-index: 0;
 
-            background-color: oklch(0 0 0 / 0.5);
-            mask: linear-gradient(180deg, transparent 0%, oklch(0 0 0) 90%);
             backdrop-filter: blur(5px);
-            transition: scale var(--spring-duration) var(--spring-easing);
-            clip-path: inset(3px 3px 3px 3px round 17px);
+            background-color: oklch(0 0 0 / 0.5);
+            mask: linear-gradient(180deg, transparent 50%, oklch(0 0 0) 90%)
+                padding-box;
 
             pointer-events: none;
         }
