@@ -1,46 +1,33 @@
-# Astro Starter Kit: Basics
+# Felix Bahr - Personal Portfolio 2025
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+Welcome to the personal portfolio website of [Felix Bahr](https://felixbahr.com/)!
+This document will explain the thought process that behind the creation of this website and the technologies it uses.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Motivation
+**My goals for my personal website were relatively simple:**
 
-## 🚀 Project Structure
+- It should be as performant as possible.
+- It should not overcomplicate things.
+- It should display relevant data in an easily navigatable and digestable manner.
+- It should be cheap to operate and easy to maintain.
 
-Inside of your Astro project, you'll see the following folders and files:
+**From this I derived the following decisions:**
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+- The site will be static. Not an SPA, no SSR, just good old HTML, CSS and JS files. Nothing is faster than this.
+- No external libraries will be used unless absolutely necessary. Keep the footprint as small as possible.
+- No CMS for now: Content will be structured using Markdown.
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+**I therefore opted for the following tech stack:**
 
-## 🧞 Commands
+- 🚀 **[Astro](https://astro.build/):** This is the main framework behind my website. It's very flexible and can be used in a variety of ways. I, however, only use it as a SSG, because of its built-in Markdown support and stellar image and font optimisations.
+- 🗒️ **[MDX](https://mdxjs.com/):** It allows me to go beyond simple Markdown formatting and implement my own Astro components. That way, I am more flexible to configure different layouts, such as grids, inside Markdown files.
+- ⛩️ **[Takumi](https://takumi.kane.tw/):** A Rust-based alternative to [Satori](https://github.com/vercel/satori), a well known library for programmatic image generation. Takumi is a lot faster and can output pixel-based formats as well, while Satori only outputs svgs. I use it for build-time-generation of OG-Images.
 
-All commands are run from the root of the project, from a terminal:
+And that's it! The rest is just good ol' HTML, CSS and a sprinkle of JS, where necessary. The site is hosted on a small, low-cost Linux VPS from [Hetzner](https://www.hetzner.com/de/cloud), which I manage using [Coolify](https://coolify.io/).
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+> [!NOTE]
+> This repository is entirely free of AI. While I recognise the value of AI for specific applications, I have decided to use it very sparingly for
+> programming. After using Cursor for several months, not only did I notice a stark decline in the enjoyment I usually derived from programming, but I also
+> found that I was learning less. Beyond autocomplete, it did not noticeably affect the speed at which I finished projects. I therefore decided to revert to
+> AI-free coding for this project. Lo and behold, the fun returned and I learned a lot.
+> Watch [this](https://www.youtube.com/watch?v=0ZUkQF6boNg) video from Coding Garden for more thoughts on AI-coding that resonated with me.
