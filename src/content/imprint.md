@@ -10,6 +10,8 @@ Tel: +49 1590 1175753
 
 [hello@felixbahr.com](mailto:hello@felixbahr.com)
 
+USt-IdNr.: DE437736640
+
 # Disclaimer - rechtliche Hinweise
 
 **Auskunfts- und Widerrufsrecht**
