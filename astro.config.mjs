@@ -16,20 +16,18 @@ export default defineConfig({
 
   trailingSlash: "always",
 
-  experimental: {
-    fonts: [
-      {
-        provider: fontProviders.fontsource(),
-        name: "JetBrains Mono",
-        cssVariable: "--jetbrains-mono",
-        weights: ["100 900"],
-        // Download only font files for characters used on the page
-        subsets: ["latin"],
-        // Use a fallback font family matching the intended appearance
-        fallbacks: ["monospace"],
-      },
-    ],
-  },
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: "JetBrains Mono",
+      cssVariable: "--jetbrains-mono",
+      weights: ["100 900"],
+      // Download only font files for characters used on the page
+      subsets: ["latin"],
+      // Use a fallback font family matching the intended appearance
+      fallbacks: ["monospace"],
+    },
+  ],
 
   integrations: [mdx(), sitemap()],
 });

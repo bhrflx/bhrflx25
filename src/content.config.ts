@@ -1,5 +1,6 @@
 import { glob } from "astro/loaders";
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 
 const projects = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/work" }),
@@ -14,7 +15,7 @@ const projects = defineCollection({
         rawUrl: z.string(),
       }),
       tags: z.array(z.string()),
-      url: z.string().url(),
+      url: z.url(),
     }),
 });
 
